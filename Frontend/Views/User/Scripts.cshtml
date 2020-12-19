@@ -1,0 +1,14 @@
+<script>
+
+    function Paginar(pageNumber) {
+        var url = '@Url.Action("PaginationSearch","User")';
+        var filter = document.getElementById('pesquisar').value;
+        PaginationFilter(url, filter, pageNumber);
+    }
+
+    function Pesquisar(filter) {
+        var url = '@Url.Action("PaginationSearch","User")';
+        PaginationFilter(url, filter);
+    }
+
+</script>

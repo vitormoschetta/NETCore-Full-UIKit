@@ -1,0 +1,53 @@
+@using Frontend.Models
+@model UserRegister
+
+<div id="modal-register" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <a asp-action="Index" class="close">     
+            <span uk-icon="icon:close; ratio:1.5"></span>
+        </a>        
+
+        <h3 class="uk-modal-title uk-text-center">Cadastro</h3>
+
+        <form id="formRegister">
+
+            <div id="alerts" class="uk-alert-danger" uk-alert style="display: none;">
+                <label id="validate_message"></label>
+            </div>
+
+            <div class="uk-flex-center margin" uk-grid>
+                <div class="uk-width-1-1@s uk-inline">
+                    <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: user"></span>
+                    <input type="text" asp-for="Username" class="uk-input uk-text-center required"
+                        placeholder="Identificação de acesso" >
+                    <span asp-validation-for="Username" class="uk-text-danger"></span>
+                </div>
+            </div>
+            <div class="uk-flex-center margin" uk-grid>
+                <div class="uk-width-1-1@s uk-inline">
+                    <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                    <input type="password" asp-for="Password" class="uk-input uk-text-center required" placeholder="Senha">
+                    <span asp-validation-for="Password" class="uk-text-danger"></span>
+                </div>
+            </div>
+            <div class="uk-flex-center" uk-grid>
+                <div class="uk-width-1-1@s uk-inline">
+                    <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                    <input type="password" asp-for="ConfirmPassword" class="uk-input uk-text-center required" 
+                        placeholder="Repita a senha">
+                    <span asp-validation-for="ConfirmPassword" class="uk-text-danger"></span>
+                </div>
+            </div>
+            
+            <p class="uk-text-center" style="margin-top: 3em;">
+                <a asp-action="Index" class="uk-button uk-button-default">Fechar</a>
+                <button type="button" class="uk-button uk-button-secondary" onclick="RegisterSubmit()">Confirmar</button>
+            </p>
+
+        </form>
+    </div>
+</div>
+
+
+<partial name="_ValidationScriptsPartial">
+

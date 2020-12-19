@@ -1,0 +1,56 @@
+<script src="~/lib/mask/dist/jquery.mask.min.js"></script>
+
+<script>
+
+    window.onload = AplicarMascaras;
+
+    function AplicarMascaras() {
+        MascaraCpf();
+        MascaraCnpj();
+        MascaraCpfCnpj();
+        MascaraCep();
+        MascaraTelefone();
+    }
+
+    function MascaraTelefone() {
+        var options = {
+            onKeyPress: function (phone, ev, el, op) {
+                var masks = ['(00) 0000-0000', '(00) 00000-0000'];
+                $('.mask-phone').mask((phone.length > 9) ? masks[1] : masks[0], op);
+            }
+        }
+
+        $('.mask-phone').length > 9 ? $('.mask-phone').mask('(00) 00000-0000', options) : $('.mask-phone').mask('(00) 0000-0000', options);
+    }
+
+    function MascaraCep() {
+        $('.mask-cep').mask('00.000-000');
+    }
+
+    function MascaraCpf() {
+        $('.mask-cpf').mask('000.000.000-00#');
+    }
+
+    function MascaraCnpj() {
+        var options = {
+            onKeyPress: function (cpf, ev, el, op) {
+                var masks = ['000.000.000-000', '00.000.000/0000-00'];
+                $('.cnpj').mask((cpf.length > 14) ? masks[1] : masks[0], op);
+            }
+        }
+
+        $('.mask-cnpj').mask('00.000.000/0000-00', options);
+    }
+
+    function MascaraCpfCnpj() {
+        var options = {
+            onKeyPress: function (cpf, ev, el, op) {
+                var masks = ['000.000.000-000', '00.000.000/0000-00'];
+                $('.mask-cpfCnpj').mask((cpf.length > 14) ? masks[1] : masks[0], op);
+            }
+        }
+
+        $('.mask-cpfCnpj').length > 11 ? $('.cpfCnpj').mask('00.000.000/0000-00', options) : $('.cpfCnpj').mask('000.000.000-00#', options);
+    }
+
+</script>

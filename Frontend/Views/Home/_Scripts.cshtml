@@ -1,0 +1,87 @@
+<script src="~/js/validation-forms.js"></script>
+
+<script>
+    
+    function Login() {
+        var url = '@Url.Action("Login","Home")';
+
+        $.get(url, function (data) {
+            $("#modal-load").html(data);
+            UIkit.modal('#modal-login').show();
+        });
+    }
+
+
+    function LoginSubmit() {        
+        var elAlert = document.getElementById('alerts');
+        var elMessage = document.getElementById('validate_message');
+
+        validate('formLogin');
+        if (!validateState) {
+            elAlert.style.display = 'block';
+            return;
+        }
+
+        var formData = $('#formLogin').serializeArray();        
+        var url = '@Url.Action("Login","Home")';
+        $.post(url, formData)
+            .done(function (dataResult) {
+                if (dataResult.success == true)
+                    location.href = '@Url.Action("Index","HomeInternal")';
+                else {
+                    elMessage.innerText = dataResult.message;
+                    elAlert.style.display = 'block';
+                }
+            })
+            .fail(function (data) {
+                alert('Erro interno. Contate o Administrador do sistema.');
+            });
+    }
+
+
+
+    function Register() {
+        var url = '@Url.Action("Register","Home")';
+
+        $.get(url, function (data) {
+            $("#modal-load").html(data);
+            UIkit.modal('#modal-register').show();
+        });
+    }
+
+    function RegisterSubmit() {
+        var elAlert = document.getElementById('alerts');
+        var elMessage = document.getElementById('validate_message');
+
+        validate('formRegister');
+        if (!validateState) {
+            elAlert.style.display = 'block';
+            return;
+        }
+
+        var formData = $('#formRegister').serializeArray();
+        var url = '@Url.Action("Register","Home")';
+        $.post(url, formData)
+            .done(function (dataResult) {
+                if (dataResult.success == true)                     
+                    ConfirmedRegister();         
+                else {
+                    elMessage.innerText = dataResult.message;
+                    elAlert.style.display = 'block';
+                }
+            })
+            .fail(function (data) {
+                alert('Erro interno. Contate o Administrador do sistema.');
+            });
+    }
+
+    function ConfirmedRegister() {         
+        var url = '@Url.Action("ConfirmedRegister","Home")';       
+
+        $.get(url, function (data) {
+            $("#modal-load").html(data);
+            UIkit.modal('#modal-registered').show();
+        });
+    }
+
+</script>

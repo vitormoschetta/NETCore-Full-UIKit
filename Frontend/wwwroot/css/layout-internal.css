@@ -1,0 +1,101 @@
+.menu-lateral {
+    padding-left: 2em;
+    padding-top: 2em;
+}
+
+
+.menu-lateral a {
+    text-decoration: none;
+    color: #3C4858;
+}
+
+.menu-lateral a:hover {
+    text-decoration: none;
+    color: #0F7AE5;
+    font-weight: bold;
+}
+
+.logo {
+    padding-left: 1em;    
+}
+
+.logo a{
+    text-decoration: none;
+    color: white;    
+}
+
+.margens {
+    padding-left: 2em;
+    padding-right: 2em;    
+}
+
+.espaco-texto-icon {
+    padding-left: 1em;
+}
+
+.conteudo {
+    padding-top: 2em;
+    padding-left: 2em;
+    padding-right: 2em;
+    font-size: 13px;
+}
+
+.disabled {
+    background-color: transparent;
+}
+
+.icon-editar {
+    color: #919496; 
+    margin-right: 3em;           
+}
+
+.icon-editar :hover {
+    color:black;    
+}
+
+.icon-excluir {
+    color: #e54980;  
+}
+
+.icon-excluir :hover {
+    color:red;    
+}
+
+.icon-liberar-acesso {
+    margin-right: 3em;   
+}
+
+
+.titulo-card {
+    padding-top: -30px;
+}
+
+.formulario {
+    margin-top: 2em;
+}
+
+.pesquisa-add-titulo {
+    margin-top: -20px;
+    margin-bottom: -10px;
+    color:#838383;
+}
+
+.page-title {
+    font-size: 20px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.page-subtitle {
+    font-size: 18px;    
+    color:#838383;
+    margin-top: 2em;
+    margin-bottom: 10px;
+}
+
+.page-close {
+    color:#C6C6C6;
+}
+
+.uk-alert-danger ul li{
+    list-style-type: none !important;
+}

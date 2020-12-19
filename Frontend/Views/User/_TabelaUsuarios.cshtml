@@ -1,0 +1,67 @@
+
+@using Frontend.Utils
+@model PaginatedList<Frontend.Models.User>
+
+<table class="uk-table uk-table-small uk-table-divider">
+    <thead>
+        <tr>
+            <th>Usuario</th>
+            <th>Perfil</th>
+            <th>Ativo?</th>
+            <th>
+                <a asp-action="AdicionarUsuario">
+                    <span uk-icon="icon:plus-circle; ratio:1.5"></span> Adicionar
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            var colorActive = (item.Active) ? "uk-text-success" : "uk-text-danger";
+            var active = (item.Active) ? "Sim" : "Não";
+
+            <tr>
+                <td>@item.Username</td>
+                <td>@item.Role</td>
+                <td class="@colorActive">@active</td>
+                <td>
+                    <a asp-action="EditarAcessoUsuario" asp-route-id="@item.Id" class="icon-editar">
+                        <span uk-icon="icon: file-edit; ratio:0.9"></span>
+                    </a>
+                    <a asp-action="ExcluirUsuario" asp-route-id="@item.Id" class="icon-excluir">
+                        <span uk-icon="icon: trash; ratio:0.9"></span>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<!-------------------------  Paginação ---------------------------->
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "uk-disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "uk-disabled" : "";
+    var prev = Model.PageIndex - 1;
+    var next = Model.PageIndex + 1;
+}
+
+<ul class="uk-pagination" uk-margin>
+    <li>
+        <a href="#" onclick="Paginar(@prev)" class="@prevDisabled">
+            <span uk-pagination-previous></span>
+        </a>
+    </li>
+    @for (int pag = 1; pag <= Model.TotalPages; pag++)
+    {
+        <li>
+            <a href="#" onclick="Paginar(@pag)">@pag</a>
+        </li>
+    }
+    <li>
+        <a href="#" onclick="Paginar(@next)" class="@nextDisabled">
+            <span uk-pagination-next></span>
+        </a>
+    </li>
+</ul>

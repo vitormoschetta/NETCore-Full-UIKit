@@ -1,0 +1,44 @@
+<div class="uk-card uk-card-default">
+    <div class="uk-card-body">
+        <div class="pesquisa-add-titulo">
+            <div class="uk-text-left" uk-grid>
+                <div class="uk-width-1-2">
+                    <div class="page-title">
+                        Solicitações de Acesso
+                    </div>
+                </div>
+                <div class="uk-width-1-2 uk-text-right">
+                    <form class="uk-search uk-search-default">
+                        <span class="uk-search-icon-flip" uk-search-icon></span>
+                        <input class="uk-search-input uk-form-small" id="pesquisar" type="search"
+                            onkeyup="PesquisarPedidosAcesso(this.value)">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class=" formulario">
+            <div id="tabela-index">
+                <partial name="_TabelaLiberarAcesso" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="../Shared/_Notify" />
+
+
+<script>
+
+    function Paginar(pageNumber) {
+        var url = '@Url.Action("PaginationSearchRequestAccess","User")';
+        var filter = document.getElementById('pesquisar').value;
+        PaginationFilter(url, filter, pageNumber);
+    }
+
+    function PesquisarPedidosAcesso(filter) {
+        var url = '@Url.Action("PaginationSearchRequestAccess","User")';
+        PaginationFilter(url, filter);
+    }
+
+</script>

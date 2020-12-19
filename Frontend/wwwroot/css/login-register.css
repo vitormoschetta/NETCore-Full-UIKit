@@ -1,0 +1,28 @@
+.botao-inicial {
+    font-weight: bold !important;
+}
+
+.uk-section {
+    margin-top: 70px !important;
+}
+
+.uk-modal-body {
+    background-color: #EEEEEE !important;
+    width: 25em !important;
+    padding: 3em;
+}
+
+.uk-modal-title {
+    color: #838383;
+}
+
+.margin {
+    margin-bottom: -30px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #838383;
+}
